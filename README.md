@@ -32,58 +32,58 @@ Objective: To run Hermes continuously on a cloud server so it could be accessed 
 
 Issue:
 
--Lost SSH access after several days.
--Connection timed out despite EC2 being in Running state.
+- Lost SSH access after several days.
+- Connection timed out despite EC2 being in Running state.
 
 Root Cause:
 
-EC2 Security Group SSH rule was restricted to my previous public IP address.
+- EC2 Security Group SSH rule was restricted to my previous public IP address.
 
 Solution:
 
--Updated inbound rule for port 22 to my current public IP.
--Successfully restored SSH connectivity.
+- Updated inbound rule for port 22 to my current public IP.
+- Successfully restored SSH connectivity.
 
 Learning:
 
-SSH access depends on Security Group rules, not just EC2 instance status.
+- SSH access depends on Security Group rules, not just EC2 instance status.
 
 # 2. Installing Hermes Agent
 
 Issue:
 
--Attempted Linux installation commands from Windows PowerShell.
--Commands such as bash were not recognized.
+- Attempted Linux installation commands from Windows PowerShell.
+- Commands such as bash were not recognized.
 
 Solution:
 
--Connected to Ubuntu EC2 first.
--Executed installation commands directly inside Linux.
+- Connected to Ubuntu EC2 first.
+- Executed installation commands directly inside Linux.
 
 Learning:
 
-Linux commands must be executed inside the Linux environment, not Windows PowerShell.
+- Linux commands must be executed inside the Linux environment, not Windows PowerShell.
 
 # 3. Amazon Bedrock Authentication
 
 Issue:
 
-Hermes could not detect AWS credentials.
+- Hermes could not detect AWS credentials.
 
 Root Cause:
 
-EC2 instance did not have an IAM Role attached.
+- EC2 instance did not have an IAM Role attached.
 
 Solution:
 
--Created and attached an IAM Role for Bedrock access.
--Verified credentials using:
+- Created and attached an IAM Role for Bedrock access.
+- Verified credentials using:
 
   aws sts get-caller-identity
 
 Learning:
 
-IAM Roles are the preferred method for EC2 authentication.
+- IAM Roles are the preferred method for EC2 authentication.
 
 # 4. Bedrock Model Access Errors
 
@@ -91,19 +91,19 @@ Issue:
 
 Claude Sonnet models returned:
 
-ResourceNotFoundException
+- ResourceNotFoundException
 
 Root Cause:
 
-Anthropic requires first-time users to submit use case details before model access.
+- Anthropic requires first-time users to submit use case details before model access.
 
 Solution:
 
-Submitted Anthropic use case information through Bedrock.
+- Submitted Anthropic use case information through Bedrock.
 
 Learning:
 
-Some Bedrock providers require additional onboarding steps before model invocation.
+- Some Bedrock providers require additional onboarding steps before model invocation.
 
 # 5. Bedrock Quota Limitations
 
@@ -111,79 +111,79 @@ Issue:
 
 Received:
 
--> ThrottlingException
--> Too many tokens per day
+- ThrottlingException
+- Too many tokens per day
 
 Root Cause:
 
-New AWS accounts often have limited Bedrock quotas.
+- New AWS accounts often have limited Bedrock quotas.
 
 Solution:
 
-Switched to Google Gemini API as the inference provider.
+- Switched to Google Gemini API as the inference provider.
 
 Learning:
 
-Quotas and service limits are common deployment considerations.
+- Quotas and service limits are common deployment considerations.
 
 # 6. Gemini API Integration
 
 Issue:
 
-Needed an alternative LLM provider.
+- Needed an alternative LLM provider.
 
 Solution:
 
--Configured Gemini API key within Hermes.
--Successfully switched inference provider.
+- Configured Gemini API key within Hermes.
+- Successfully switched inference provider.
 
 Learning:
 
-Hermes supports multiple providers and can be reconfigured without rebuilding infrastructure.
+- Hermes supports multiple providers and can be reconfigured without rebuilding infrastructure.
 
 # 7. WhatsApp Integration
 
 Issue:
 
-Needed a user-friendly interface for interacting with Hermes.
+- Needed a user-friendly interface for interacting with Hermes.
 
 Solution:
 
--Connected Hermes using WhatsApp self-chat mode.
--Successfully communicated with Hermes through WhatsApp.
+- Connected Hermes using WhatsApp self-chat mode.
+- Successfully communicated with Hermes through WhatsApp.
 
 Learning:
 
-Messaging platforms can serve as lightweight frontends for AI agents.
+- Messaging platforms can serve as lightweight frontends for AI agents.
 
 # 8. Process Persistence Problem
 
 Issue:
 
-Hermes stopped responding after SSH sessions disconnected.
+- Hermes stopped responding after SSH sessions disconnected.
 
 Root Cause:
 
-Gateway process terminated when terminal session closed.
+- Gateway process terminated when terminal session closed.
 
 Solution:
 
--Installed and configured tmux.
--Ran Hermes Gateway inside a tmux session.
+- Installed and configured tmux.
+- Ran Hermes Gateway inside a tmux session.
 
 Learning:
 
-Long-running services should not depend on active SSH sessions.
+- Long-running services should not depend on active SSH sessions.
 
 # 9. Understanding tmux
 
 Common Mistake:
 
-Confusing Ctrl+C with tmux detach.
+- Confusing Ctrl+C with tmux detach.
 
 Result:
 
-Ctrl+C terminated Hermes Gateway.
+- Ctrl+C terminated Hermes Gateway.
 
 Correct Workflow:
 
@@ -206,8 +206,8 @@ Reconnect later:
 
 Learning:
 
--Detaching preserves running processes.
--Ctrl+C terminates them.
+- Detaching preserves running processes.
+- Ctrl+C terminates them.
 
 # Final Outcome
 
@@ -225,12 +225,12 @@ The agent remains available even when my laptop is offline because it runs conti
 
 # Key Takeaways
 
--Learned practical Linux administration.
--Understood AWS networking and security groups.
--Worked with IAM roles and Bedrock authentication.
--Experienced real-world API quota and access issues.
--Learned process management using tmux.
--Successfully deployed and maintained a cloud-hosted AI agent.
+- Learned practical Linux administration.
+- Understood AWS networking and security groups.
+- Worked with IAM roles and Bedrock authentication.
+- Experienced real-world API quota and access issues.
+- Learned process management using tmux.
+- Successfully deployed and maintained a cloud-hosted AI agent.
 
 #Key Realization
 
