@@ -26,6 +26,187 @@ Objective: To run Hermes continuously on a cloud server so it could be accessed 
 - WhatsApp Automation
 - Infrastructure Debugging
 
+# Installation Guide
+
+## Prerequisites
+
+Before starting, ensure you have:
+
+- AWS Account
+- Ubuntu EC2 Instance
+- SSH Key Pair (.pem)
+- Google AI Studio API Key (or Bedrock access)
+- Hermes Agent
+
+---
+
+## Connect to EC2
+
+```bash
+ssh -i "your-key.pem" ubuntu@<EC2-PUBLIC-IP>
+```
+
+Verify connection:
+
+```bash
+whoami
+```
+
+Expected output:
+
+```text
+ubuntu
+```
+
+---
+
+## Update Ubuntu
+
+```bash
+sudo apt update
+sudo apt upgrade -y
+```
+
+---
+
+## Install tmux
+
+```bash
+sudo apt install tmux -y
+```
+
+Verify installation:
+
+```bash
+tmux -V
+```
+
+# Hermes Installation
+
+## Clone Hermes
+
+```bash
+git clone <hermes-repository-url>
+cd hermes-agent
+```
+
+---
+
+## Install Dependencies
+
+```bash
+npm install
+```
+
+or follow the official Hermes installation guide.
+
+---
+
+## Configure Provider
+
+Select a provider:
+
+```bash
+hermes model
+```
+
+Options tested:
+
+- Amazon Bedrock
+- Google Gemini
+
+---
+
+## Configure Google Gemini
+
+Obtain an API key from Google AI Studio.
+
+During setup:
+
+```text
+GOOGLE_API_KEY=YOUR_API_KEY
+```
+
+Default Base URL:
+
+```text
+https://generativelanguage.googleapis.com/v1beta
+```
+
+---
+
+## Configure WhatsApp
+
+```bash
+hermes whatsapp
+```
+
+Choose:
+
+```text
+2. Personal number (self-chat)
+```
+
+Pair using the QR code.
+
+---
+
+## Start Hermes Gateway
+
+```bash
+hermes gateway
+```
+
+Expected output:
+
+```text
+[WhatsApp] Bridge ready
+```
+
+# Running Hermes with tmux
+
+Create a session:
+
+```bash
+tmux new -s hermes
+```
+
+Start gateway:
+
+```bash
+hermes gateway
+```
+
+Detach safely:
+
+```text
+Ctrl+B
+D
+```
+
+Reattach later:
+
+```bash
+tmux attach -t hermes
+```
+
+List sessions:
+
+```bash
+tmux ls
+```
+
+Stop gateway:
+
+```bash
+Ctrl+C
+```
+
+Learning:
+
+- Ctrl+C stops Hermes
+- Ctrl+B then D keeps Hermes running
+
 # Major Challenges Encountered
 
 # 1. SSH Connection Timeouts
