@@ -40,11 +40,42 @@ Before starting, ensure you have:
 
 ---
 
+## AWS Infrastructure Setup
+
+### 1. Create EC2 Instance
+
+- AWS EC2
+- Ubuntu Server 24.04 LTS
+- t3.small (Free Tier) or higher
+- Create and download a PEM key pair
+- Allow SSH (Port 22) in Security Groups
+
+### 2. Configure Security Group
+
+Inbound Rules:
+
+| Type | Port | Source |
+|--------|--------|--------|
+| SSH | 22 | My IP |
+
+### 3. Connect to EC2
+
+```bash
+ssh -i "your-key.pem" ubuntu@<EC2-PUBLIC-IP>
+
 ## Connect to EC2
 
 ```bash
 ssh -i "your-key.pem" ubuntu@<EC2-PUBLIC-IP>
 ```
+Expected output:
+
+```text
+ssh -i "Husna Hermes Agent.pem" ubuntu@15.xxx.xxx.xxx
+```
+
+
+---
 
 Verify connection:
 
