@@ -118,7 +118,7 @@ cd hermes-agent
 npm install
 ```
 
-or follow the official Hermes installation guide.
+or follow the official Hermes installation guide. (https://hermes-agent.nousresearch.com/docs/getting-started/quickstart#1-install-hermes-agent)
 
 ---
 
@@ -432,8 +432,6 @@ The agent remains available even when my laptop is offline because it runs conti
 - Experienced real-world API quota and access issues.
 - Learned process management using tmux.
 - Successfully deployed and maintained a cloud-hosted AI agent.
-
-#Key Realization
 
 Prior to this project, I mainly focused on building AI applications and models.
 
