@@ -1,11 +1,11 @@
-#Overview
+# Overview
 
 > A practical AI infrastructure project documenting the deployment of Hermes Agent on AWS EC2, integration with WhatsApp, and troubleshooting real-world cloud and LLM deployment challenges.
 
 As part of my AI Engineering learning journey, I deployed Hermes Agent on an AWS EC2 Ubuntu instance and connected it to WhatsApp, allowing me to interact with an AI agent remotely through my phone.
 This project provided hands-on experience with cloud infrastructure, Linux, SSH, AWS IAM, Amazon Bedrock, Google Gemini API integration, tmux session management, and agent deployment troubleshooting.
 
-#Architecture
+# Architecture
 
 WhatsApp → Hermes Gateway → LLM Provider (Gemini / Bedrock) → AWS EC2 (Ubuntu)
 
@@ -26,9 +26,9 @@ Objective: To run Hermes continuously on a cloud server so it could be accessed 
 - WhatsApp Automation
 - Infrastructure Debugging
 
-#Major Challenges Encountered
+# Major Challenges Encountered
 
-#1. SSH Connection Timeouts
+# 1. SSH Connection Timeouts
 
 Issue:
 
@@ -48,7 +48,7 @@ Learning:
 
 SSH access depends on Security Group rules, not just EC2 instance status.
 
-#2. Installing Hermes Agent
+# 2. Installing Hermes Agent
 
 Issue:
 
@@ -64,7 +64,7 @@ Learning:
 
 Linux commands must be executed inside the Linux environment, not Windows PowerShell.
 
-#3. Amazon Bedrock Authentication
+# 3. Amazon Bedrock Authentication
 
 Issue:
 
@@ -85,7 +85,7 @@ Learning:
 
 IAM Roles are the preferred method for EC2 authentication.
 
-#4. Bedrock Model Access Errors
+# 4. Bedrock Model Access Errors
 
 Issue:
 
@@ -105,7 +105,7 @@ Learning:
 
 Some Bedrock providers require additional onboarding steps before model invocation.
 
-#5. Bedrock Quota Limitations
+# 5. Bedrock Quota Limitations
 
 Issue:
 
@@ -126,7 +126,7 @@ Learning:
 
 Quotas and service limits are common deployment considerations.
 
-#6. Gemini API Integration
+# 6. Gemini API Integration
 
 Issue:
 
@@ -141,7 +141,7 @@ Learning:
 
 Hermes supports multiple providers and can be reconfigured without rebuilding infrastructure.
 
-#7. WhatsApp Integration
+# 7. WhatsApp Integration
 
 Issue:
 
@@ -156,7 +156,7 @@ Learning:
 
 Messaging platforms can serve as lightweight frontends for AI agents.
 
-#8. Process Persistence Problem
+# 8. Process Persistence Problem
 
 Issue:
 
@@ -175,7 +175,7 @@ Learning:
 
 Long-running services should not depend on active SSH sessions.
 
-#9. Understanding tmux
+# 9. Understanding tmux
 
 Common Mistake:
 
@@ -209,7 +209,7 @@ Learning:
 -Detaching preserves running processes.
 -Ctrl+C terminates them.
 
-#Final Outcome
+# Final Outcome
 
 Successfully deployed a cloud-hosted Hermes Agent accessible through WhatsApp.
 
@@ -223,7 +223,7 @@ Capabilities Demonstrated:
 
 The agent remains available even when my laptop is offline because it runs continuously on AWS EC2.
 
-#Key Takeaways
+# Key Takeaways
 
 -Learned practical Linux administration.
 -Understood AWS networking and security groups.
