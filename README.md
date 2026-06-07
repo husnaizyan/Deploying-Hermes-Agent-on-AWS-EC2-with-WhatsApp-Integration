@@ -60,22 +60,11 @@ Inbound Rules:
 
 ### 3. Connect to EC2
 
-```bash
-ssh -i "your-key.pem" ubuntu@<EC2-PUBLIC-IP>
-
-## Connect to EC2
+Connect from your local terminal or PowerShell:
 
 ```bash
 ssh -i "your-key.pem" ubuntu@<EC2-PUBLIC-IP>
 ```
-Expected output:
-
-```text
-ssh -i "Husna Hermes Agent.pem" ubuntu@15.xxx.xxx.xxx
-```
-
-
----
 
 Verify connection:
 
